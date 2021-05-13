@@ -168,6 +168,20 @@ $ ./gl_image -i -p ar750s
 You can go to the link https://github.com/gl-inet/sdk according to the instructions to compile helloworld.ipk. Use this package for imagebuilder test.Or use your own ipk and emulate the following steps to build the firmware.
 
 ## Basic configuration
+All the GL device package configuration is done with the **glinet/images.json** file. The following
+
+	packages: The default packages included in all firmwares
+	profiles: Configuration for each firmware
+	{
+		<image_name>:
+		{
+		    profile: The name of the device. Run "make info" for a list of available devices.
+		    version: Firmware version. Generates a version file called /etc/glversion and overrides /etc/opk/distfeeds.conf with the version number
+		    imagebuilder: Image builder folder
+		    packages: Packages in the firmware. Variables include the default packages. Add the package name to include. "-" appended to the package name excludes the package, eg: "-mwan3"
+		    files: Files folder, it allows customized configuration files to be included in images built with Image Generator, all files from the folder will be copied into device's rootfs("/").
+		}
+	}
 
 **Add ipk packages**
 
@@ -225,21 +239,6 @@ etc  www
 5.Completed in *gl_imagebuilder/bin/mifi/openwrt-mifi-3.027-0312.bin*, find the bin file and installed to the routing.
 
 ## Advanced configuration
-
-All the GL device package configuration is done with the **glinet/images.json** file. The following
-
-	packages: The default packages included in all firmwares
-	profiles: Configuration for each firmware
-	{
-		<image_name>:
-		{
-		    profile: The name of the device. Run "make info" for a list of available devices.
-		    version: Firmware version. Generates a version file called /etc/glversion and overrides /etc/opk/distfeeds.conf with the version number
-		    imagebuilder: Image builder folder
-		    packages: Packages in the firmware. Variables include the default packages. Add the package name to include. "-" appended to the package name excludes the package, eg: "-mwan3"
-		    files: Files folder, it allows customized configuration files to be included in images built with Image Generator, all files from the folder will be copied into device's rootfs("/").
-		}
-	}
 
 **Example**
 
