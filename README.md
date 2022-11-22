@@ -65,6 +65,7 @@ $ ./scripts/gen_config.py target_ar71xx_gl-ar150
 ```
 
 5. Make firmware
+  
   If you want to compile GL-AR150 product and add some packages, you can excute **make menuconfig** to chose the product and other packages, then `make` to build your firmware.
 
 
