@@ -55,10 +55,20 @@ $ ls -l /usr/bin/python3*
 1. Compile MT2500(2022.11.22)
 ```
  git clone https://github.com/gl-inet/gl-infra-builder.git
+```
+```
  cd gl-infra-builder
+```
+```
  python3 setup.py -c  configs/config-mt798x-7.6.6.1.yml
+```
+```
  cd mt7981
+```
+```
  ./scripts/gen_config.py target_mt7981_gl-mt2500 luci
+```
+```
  make -j5
 ```
 
