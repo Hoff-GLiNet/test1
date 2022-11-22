@@ -33,20 +33,20 @@ $ ls -l /usr/bin/python3*
 
 ### Quickstart
 
-1. Clone repository.
+#### 1. Clone repository.
 
 ```
 $ git clone https://github.com/gl-inet/gl-infra-builder.git
 $ cd gl-infra-builder
 ```
 
-2. List the openwrt verizon and then chose you want version
+#### 2. List the openwrt verizon and then chose you want version
 
 ```
 $ ls configs -hl
 ```
 
-3. For example, if you want to use openwrt-19.07.8, use the below command to download openwrt-19.07.8 source code
+#### 3. For example, if you want to use openwrt-19.07.8, use the below command to download openwrt-19.07.8 source code
 
 ```
 $ python3 setup.py -c configs/config-19.07.8.yml
@@ -59,7 +59,7 @@ $ cd openwrt-19.07/openwrt-19.07.8/
 
 4. Generate your target configuration. (For the following content, we will continue to take 19.07 as an example)
 
-  For example, If you want to compile GL-AR150 product you can use command:
+   For example, If you want to compile GL-AR150 product you can use command:
 ```
 $ ./scripts/gen_config.py target_ar71xx_gl-ar150
 ```
