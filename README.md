@@ -53,19 +53,19 @@ $ python3 setup.py -c configs/config-19.07.8.yml
 $ cd openwrt-19.07/openwrt-19.07.8/
 ```
 
-There two useful commands, `./scripts/gen_config.py list` and `./scripts/gen_config.py <target_profile> <function_profile>`
+  There two useful commands, `./scripts/gen_config.py list` and `./scripts/gen_config.py <target_profile> <function_profile>`
 
-use `./scripts/gen_config.py list` command, you can get Target Profiles and Function Profiles. Target Profiles is you want to compile products, don't modify. Function Profiles is you want to add/delete packages, you can modify. Those files in the **profiles** directory.
+  use `./scripts/gen_config.py list` command, you can get Target Profiles and Function Profiles. Target Profiles is you want to compile products, don't modify. Function Profiles is you want to add/delete packages, you can modify. Those files in the **profiles** directory.
 
 4. Generate your target configuration. (For the following content, we will continue to take 19.07 as an example)
 
-For example, If you want to compile GL-AR150 product you can use command:
+  For example, If you want to compile GL-AR150 product you can use command:
 ```
 $ ./scripts/gen_config.py target_ar71xx_gl-ar150
 ```
 
 5. Make firmware
-If you want to compile GL-AR150 product and add some packages, you can excute **make menuconfig** to chose the product and other packages, then `make` to build your firmware.
+  If you want to compile GL-AR150 product and add some packages, you can excute **make menuconfig** to chose the product and other packages, then `make` to build your firmware.
 
 
 Note: If you gcc version is 10, you will encounter some error, like this:
