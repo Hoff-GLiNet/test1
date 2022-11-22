@@ -1,3 +1,4 @@
+
 # Under development, please do not use
 
 ## Requirements
@@ -30,46 +31,39 @@ $ ls -l /usr/bin/python3*
  /usr/bin/python3m -> python3.5m
  /usr/bin/python3m-config -> python3.5m-config
 ```
-
+`` 
 ### Quickstart
 
-#### 1. Clone repository.
+1. Run `git clone https://github.com/gl-inet/gl-infra-builder.git && cd gl-infra-builder` to clone repository, .
 
+2. Run `ls configs -hl` to list the openwrt verizon
+
+3. Chose your want version, for example, if you want to use openwrt-19.07.8, Run `python3 setup.py -c configs/config-19.07.8.yml` to download openwrt-19.07.8 source code
+
+4. Run `cd openwrt-19.07/openwrt-19.07.8/` to enter openwrt-19.07.8 directory
+
+5. Run `./scripts/gen_config.py list` to get target_xxx and glinet_xxx files. target_xxx is you want to compile products, don't modify. glinet_xxx is you want to add/delete packages, you can modify. Those files in the **profiles** directory.
+
+6. Run `./scripts/gen_config.py <target_profile> <function_profile>` to chose the product target and add some packages. <target_profile> is you want to compile products. <function_profile> is you want to add/delete packages. 
+
+7. For example, If you want to compile GL-AR150 product and add luci, you can run `./scripts/gen_config.py target_ar71xx_gl-ar150 luci`. You can run `make menuconfig` to chose other packages
+
+8. Run `make` to build your firmware.
+
+   
+### Example
+1. Compile MT2500(2022.11.22)
 ```
 $ git clone https://github.com/gl-inet/gl-infra-builder.git
 $ cd gl-infra-builder
+$ python3 setup.py -c  configs/config-mt798x-7.6.6.1.yml
+$ cd mt7981
+$ ./scripts/gen_config.py target_mt7981_gl-mt2500 luci
+$ make -j5
 ```
 
-#### 2. List the openwrt verizon and then chose you want version
-
-```
-$ ls configs -hl
-```
-
-#### 3. For example, if you want to use openwrt-19.07.8, use the below command to download openwrt-19.07.8 source code
-
-```
-$ python3 setup.py -c configs/config-19.07.8.yml
-$ cd openwrt-19.07/openwrt-19.07.8/
-```
-
-  There two useful commands, `./scripts/gen_config.py list` and `./scripts/gen_config.py <target_profile> <function_profile>`
-
-  use `./scripts/gen_config.py list` command, you can get Target Profiles and Function Profiles. Target Profiles is you want to compile products, don't modify. Function Profiles is you want to add/delete packages, you can modify. Those files in the **profiles** directory.
-
-4. Generate your target configuration. (For the following content, we will continue to take 19.07 as an example)
-
-   For example, If you want to compile GL-AR150 product you can use command:
-```
-$ ./scripts/gen_config.py target_ar71xx_gl-ar150
-```
-
-5. Make firmware
-  
-  If you want to compile GL-AR150 product and add some packages, you can excute **make menuconfig** to chose the product and other packages, then `make` to build your firmware.
-
-
-Note: If you gcc version is 10, you will encounter some error, like this:
+### Note
+1. If you gcc version is 10, you will encounter some error, like this:
 ```
 /usr/bin/ld: scripts/dtc/dtc-parser.tab.o:(.bss+0x10): multiple definition of `yylloc'; scripts/dtc/dtc-lexer.lex.o:(.bss+0x0): first defined here
 collect2: error：ld returned 1 exit status.
@@ -78,14 +72,4 @@ You should execute the following command to reduce the gcc version:
 ```
 $ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100
 $ update-alternatives --config gcc
-```
-
-For example, compile MT2500(2022.11.22)
-```
-$ git clone https://github.com/gl-inet/gl-infra-builder.git
-$ cd gl-infra-builder
-$ python3 setup.py -c  configs/config-mt798x-7.6.6.1.yml
-$ cd mt7981
-$ ./scripts/gen_config.py target_mt7981_gl-mt2500 luci
-$ make -j5
 ```
