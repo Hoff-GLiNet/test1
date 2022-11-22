@@ -43,14 +43,14 @@ $ cd gl-infra-builder
 2. List the openwrt verizon and then chose you want version
 
 ```
-ls configs -hl
+$ ls configs -hl
 ```
 
 3. For example, if you want to use openwrt-19.07.8, use the below command to download openwrt-19.07.8 source code
 
 ```
-python3 setup.py -c configs/config-19.07.8.yml
-cd openwrt-19.07/openwrt-19.07.8/
+$ python3 setup.py -c configs/config-19.07.8.yml
+$ cd openwrt-19.07/openwrt-19.07.8/
 ```
 
 There two useful commands, `./scripts/gen_config.py list` and `./scripts/gen_config.py <target_profile> <function_profile>`
@@ -75,16 +75,16 @@ collect2: error：ld returned 1 exit status.
 ```
 You should execute the following command to reduce the gcc version:
 ```
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100
-update-alternatives --config gcc
+$ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 100
+$ update-alternatives --config gcc
 ```
 
 For example, compile MT2500(2022.11.22)
 ```
-git clone https://github.com/gl-inet/gl-infra-builder.git
-cd gl-infra-builder
-python3 setup.py -c  configs/config-mt798x-7.6.6.1.yml
-cd mt7981
-./scripts/gen_config.py target_mt7981_gl-mt2500 luci
-make -j5
+$ git clone https://github.com/gl-inet/gl-infra-builder.git
+$ cd gl-infra-builder
+$ python3 setup.py -c  configs/config-mt798x-7.6.6.1.yml
+$ cd mt7981
+$ ./scripts/gen_config.py target_mt7981_gl-mt2500 luci
+$ make -j5
 ```
