@@ -34,7 +34,7 @@ $ ls -l /usr/bin/python3*
 `` 
 ### Quickstart
 
-1. Run `git clone https://github.com/gl-inet/gl-infra-builder.git && cd gl-infra-builder` to clone repository, .
+1. Run `git clone https://github.com/gl-inet/gl-infra-builder.git && cd gl-infra-builder` to clone repository
 
 2. Run `ls configs -hl` to list the openwrt verizon
 
@@ -46,7 +46,7 @@ $ ls -l /usr/bin/python3*
 
 6. Run `./scripts/gen_config.py <target_profile> <function_profile>` to chose the product target and add some packages. <target_profile> is you want to compile products. <function_profile> is you want to add/delete packages. 
 
-7. For example, If you want to compile GL-AR150 product and add luci, you can run `./scripts/gen_config.py target_ar71xx_gl-ar150 luci`. You can run `make menuconfig` to chose other packages
+7. For example, If you want to compile GL-AR150 product and add luci, you can run `./scripts/gen_config.py target_ath79_gl-ar150 luci`. You can run `make menuconfig` to chose other packages
 
 8. Run `make` to build your firmware.
 
@@ -54,12 +54,12 @@ $ ls -l /usr/bin/python3*
 ### Example
 1. Compile MT2500(2022.11.22)
 ```
-$ git clone https://github.com/gl-inet/gl-infra-builder.git
-$ cd gl-infra-builder
-$ python3 setup.py -c  configs/config-mt798x-7.6.6.1.yml
-$ cd mt7981
-$ ./scripts/gen_config.py target_mt7981_gl-mt2500 luci
-$ make -j5
+ git clone https://github.com/gl-inet/gl-infra-builder.git
+ cd gl-infra-builder
+ python3 setup.py -c  configs/config-mt798x-7.6.6.1.yml
+ cd mt7981
+ ./scripts/gen_config.py target_mt7981_gl-mt2500 luci
+ make -j5
 ```
 
 ### Note
